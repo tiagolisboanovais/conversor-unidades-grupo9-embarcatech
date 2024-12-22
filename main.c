@@ -22,5 +22,12 @@ double converterComprimento(double comprimento, char unidadeEntrada[], char unid
 
 
 int main (void){
+    printf("Exemplo do conversor de comprimento\n");
+    printf("Exemplo 1:\n");
+    // Comprimento em metros
+    double comprimento = 150;
+    printf("Comprimento em metros: %.2lfm\n", comprimento);
+    printf("Comprimento em centímetros: %.2lfcm\n", converterComprimento(comprimento, "m", "cm"));
+    printf("Comprimento em milímetros: %.2lfmm\n", converterComprimento(comprimento, "m", "mm"));
     return 0;
 }
