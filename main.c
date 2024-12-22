@@ -29,5 +29,12 @@ int main (void){
     printf("Comprimento em metros: %.2lfm\n", comprimento);
     printf("Comprimento em centímetros: %.2lfcm\n", converterComprimento(comprimento, "m", "cm"));
     printf("Comprimento em milímetros: %.2lfmm\n", converterComprimento(comprimento, "m", "mm"));
+
+    printf("Exemplo 2:\n");
+    // Comprimento em centímetros
+    comprimento = 15;
+    printf("Comprimento em centímetros: %.2lfcm\n", comprimento);
+    printf("Comprimento em metros: %.2lfm\n", converterComprimento(comprimento, "cm", "m"));
+    printf("Comprimento em milímetros: %.2lfmm\n", converterComprimento(comprimento, "cm", "mm"));
     return 0;
 }
