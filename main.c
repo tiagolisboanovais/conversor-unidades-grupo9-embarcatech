@@ -138,6 +138,7 @@ int main (void){
         printf("2 - Converter Velocidade\n");
         printf("3 - Converter Comprimento\n");
         printf("4 - Converter Massa\n");
+        printf("5 - Converter Tempo\n");
         printf("0 - Sair\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
@@ -189,6 +190,11 @@ int main (void){
                 scanf("%s", unidadeSaida);
                 printf("Resultado: %.2lf\n", 
                     converterMassa(valor, unidadeEntrada, unidadeSaida));
+                break;
+            
+            case 5:
+                printf("\n=== Conversão de Tempo ===\n");
+                printf("Em desenvolvimento...\n");
                 break;
 
             case 0:
