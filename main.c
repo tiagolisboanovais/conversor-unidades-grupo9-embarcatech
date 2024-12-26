@@ -96,6 +96,7 @@ int main (void){
     } while(opcao != 0);
 
     return 0;
+}
 
 double conversaoTemperatura(double medicao, char unidade, char conversao){
     
@@ -233,5 +234,4 @@ double converterTempo(double tempo, char unidadeEntrada[], char unidadeSaida[]) 
         printf("Unidade de conversão inválida.\n");
         return -1;
     }
-}
 }
