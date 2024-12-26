@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 
+// Cabecalho das funções
+double conversaoTemperatura(double medicao, char unidade, char conversao);
+double converterVelocidade(double valor, char entrada[], char saida[]);
+double converterComprimento(double comprimento, char unidadeEntrada[], char unidadeSaida[]);
+
 /*Função de conversão de medida de temperatura*/
 double conversaoTemperatura(double medicao, char unidade, char conversao){
     
@@ -61,6 +66,27 @@ double conversaoTemperatura(double medicao, char unidade, char conversao){
     return medicao;
 }
 
+double converterVelocidade(double valor, char entrada[], char saida[]) {
+    double convertido = 0.0;
+
+    // Conversão para m/s como base intermediária
+    if (strcmp(entrada, "km") == 0){         // De km/h para m/s
+        valor /= 3.6;
+    } else if (strcmp(entrada, "ml") == 0)  {  // De mph para m/s
+        valor /= 2.237;
+    }
+
+    // Conversão de m/s para a unidade desejada
+    if (strcmp(saida, "km") == 0)  {           // Para km/h
+        convertido = valor * 3.6;
+    } else if (strcmp(saida, "m") == 0)   {    // Para m/s
+        convertido = valor;
+    } else if (strcmp(saida, "ml") == 0)   {    // Para mph
+        convertido = valor * 2.237;
+    }
+
+    return convertido;
+}
 
 double converterComprimento(double comprimento, char unidadeEntrada[], char unidadeSaida[]) {
     if (strcmp(unidadeEntrada, "m") == 0 && strcmp(unidadeSaida, "cm") == 0) {
