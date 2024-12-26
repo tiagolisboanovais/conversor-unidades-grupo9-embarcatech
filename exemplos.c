@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 double conversaoTemperatura(double medicao, char unidade, char conversao){
     
