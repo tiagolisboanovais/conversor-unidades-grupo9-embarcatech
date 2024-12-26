@@ -5,6 +5,7 @@
 double conversaoTemperatura(double medicao, char unidade, char conversao);
 double converterVelocidade(double valor, char entrada[], char saida[]);
 double converterComprimento(double comprimento, char unidadeEntrada[], char unidadeSaida[]);
+double converterMassa(double massa, char unidadeEntrada[], char unidadeSaida[]);
 
 /*Função de conversão de medida de temperatura*/
 double conversaoTemperatura(double medicao, char unidade, char conversao){
@@ -107,6 +108,24 @@ double converterComprimento(double comprimento, char unidadeEntrada[], char unid
     }
 }
 
+double converterMassa(double massa, char unidadeEntrada[], char unidadeSaida[]) {
+    if (strcmp(unidadeEntrada, "kg") == 0 && strcmp(unidadeSaida, "g") == 0) {
+        return massa * 1000;
+    } else if (strcmp(unidadeEntrada, "kg") == 0 && strcmp(unidadeSaida, "t") == 0) {
+        return massa / 1000;
+    } else if (strcmp(unidadeEntrada, "g") == 0 && strcmp(unidadeSaida, "kg") == 0) {
+        return massa / 1000;
+    } else if (strcmp(unidadeEntrada, "g") == 0 && strcmp(unidadeSaida, "t") == 0) {
+        return massa / 1000000;
+    } else if (strcmp(unidadeEntrada, "t") == 0 && strcmp(unidadeSaida, "g") == 0) {
+        return massa * 1000000;
+    } else if (strcmp(unidadeEntrada, "t") == 0 && strcmp(unidadeSaida, "kg") == 0) {
+        return massa * 1000;
+    } else {
+        printf("Unidade de conversão inválida.\n");
+        return -1;
+    }
+}
 
 int main (void){
     printf("Exemplo do conversor de comprimento\n");
