@@ -6,6 +6,7 @@ double conversaoTemperatura(double medicao, char unidade, char conversao);
 double converterVelocidade(double valor, char entrada[], char saida[]);
 double converterComprimento(double comprimento, char unidadeEntrada[], char unidadeSaida[]);
 double converterMassa(double massa, char unidadeEntrada[], char unidadeSaida[]);
+double converterTempo(double tempo, char unidadeEntrada[], char unidadeSaida[]);
 
 /*Função de conversão de medida de temperatura*/
 double conversaoTemperatura(double medicao, char unidade, char conversao){
@@ -127,6 +128,25 @@ double converterMassa(double massa, char unidadeEntrada[], char unidadeSaida[]) 
     }
 }
 
+double converterTempo(double tempo, char unidadeEntrada[], char unidadeSaida[]) {
+    if (strcmp(unidadeEntrada, "h") == 0 && strcmp(unidadeSaida, "min") == 0) {
+        return tempo * 60;
+    } else if (strcmp(unidadeEntrada, "h") == 0 && strcmp(unidadeSaida, "s") == 0) {
+        return tempo * 3600;
+    } else if (strcmp(unidadeEntrada, "min") == 0 && strcmp(unidadeSaida, "h") == 0) {
+        return tempo / 60;
+    } else if (strcmp(unidadeEntrada, "min") == 0 && strcmp(unidadeSaida, "s") == 0) {
+        return tempo * 60;
+    } else if (strcmp(unidadeEntrada, "s") == 0 && strcmp(unidadeSaida, "h") == 0) {
+        return tempo / 3600;
+    } else if (strcmp(unidadeEntrada, "s") == 0 && strcmp(unidadeSaida, "min") == 0) {
+        return tempo / 60;
+    } else {
+        printf("Unidade de conversão inválida.\n");
+        return -1;
+    }
+}
+
 int main (void){
     int opcao;
     double valor;
@@ -194,9 +214,16 @@ int main (void){
             
             case 5:
                 printf("\n=== Conversão de Tempo ===\n");
-                printf("Em desenvolvimento...\n");
+                printf("Digite o valor: ");
+                scanf("%lf", &valor);
+                printf("Digite a unidade de entrada (h/min/s): ");
+                scanf("%s", unidadeEntrada);
+                printf("Digite a unidade de saída (h/min/s): ");
+                scanf("%s", unidadeSaida);
+                printf("Resultado: %.2lf\n", 
+                    converterTempo(valor, unidadeEntrada, unidadeSaida));
                 break;
-
+            
             case 0:
                 printf("Encerrando o programa...\n");
                 break;
