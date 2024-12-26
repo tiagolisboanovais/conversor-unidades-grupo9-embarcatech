@@ -128,48 +128,77 @@ double converterMassa(double massa, char unidadeEntrada[], char unidadeSaida[]) 
 }
 
 int main (void){
-    printf("Exemplo do conversor de comprimento\n");
-    printf("Exemplo 1:\n");
-    // Comprimento em metros
-    double comprimento = 150;
-    printf("Comprimento em metros: %.2lfm\n", comprimento);
-    printf("Comprimento em centímetros: %.2lfcm\n", converterComprimento(comprimento, "m", "cm"));
-    printf("Comprimento em milímetros: %.2lfmm\n", converterComprimento(comprimento, "m", "mm"));
+    int opcao;
+    double valor;
+    char unidadeEntrada[3], unidadeSaida[3];
 
-    printf("Exemplo 2:\n");
-    // Comprimento em centímetros
-    comprimento = 15;
-    printf("Comprimento em centímetros: %.2lfcm\n", comprimento);
-    printf("Comprimento em metros: %.2lfm\n", converterComprimento(comprimento, "cm", "m"));
-    printf("Comprimento em milímetros: %.2lfmm\n", converterComprimento(comprimento, "cm", "mm"));
+    do {
+        printf("\n=== CONVERSOR DE UNIDADES ===\n");
+        printf("1 - Converter Temperatura\n");
+        printf("2 - Converter Velocidade\n");
+        printf("3 - Converter Comprimento\n");
+        printf("4 - Converter Massa\n");
+        printf("0 - Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
 
+        switch(opcao) {
+            case 1:
+                printf("\n=== Conversão de Temperatura ===\n");
+                printf("Digite o valor: ");
+                scanf("%lf", &valor);
+                printf("Digite a unidade de entrada (C/F/K): ");
+                scanf(" %c", &unidadeEntrada[0]);
+                printf("Digite a unidade de saída (C/F/K): ");
+                scanf(" %c", &unidadeSaida[0]);
+                printf("Resultado: %.2lf\n", 
+                    conversaoTemperatura(valor, unidadeEntrada[0], unidadeSaida[0]));
+                break;
 
+            case 2:
+                printf("\n=== Conversão de Velocidade ===\n");
+                printf("Digite o valor: ");
+                scanf("%lf", &valor);
+                printf("Digite a unidade de entrada (km/m/ml): ");
+                scanf("%s", unidadeEntrada);
+                printf("Digite a unidade de saída (km/m/ml): ");
+                scanf("%s", unidadeSaida);
+                printf("Resultado: %.2lf\n", 
+                    converterVelocidade(valor, unidadeEntrada, unidadeSaida));
+                break;
 
-    printf("Exemplo do conversor de temperatura\n");
-    double temp;
-    char uni1, uni2;
-    int l;
-    
-    // Interface simples para uso da função de conversão
-    printf("Conversor de Unidades de Temperatura\n");
-    do
-    {
-        l = 1;
-        printf("Digite a sua medição (com unidade): ");
-        scanf("%lf %c%*c", &temp, &uni1);
-        printf("\n");
-        printf("Digite a unidade para conversao: ");
-        scanf("%c%*c", &uni2);
+            case 3:
+                printf("\n=== Conversão de Comprimento ===\n");
+                printf("Digite o valor: ");
+                scanf("%lf", &valor);
+                printf("Digite a unidade de entrada (m/cm/mm): ");
+                scanf("%s", unidadeEntrada);
+                printf("Digite a unidade de saída (m/cm/mm): ");
+                scanf("%s", unidadeSaida);
+                printf("Resultado: %.2lf\n", 
+                    converterComprimento(valor, unidadeEntrada, unidadeSaida));
+                break;
 
-        temp = conversaoTemperatura(temp, uni1, uni2);
-        //Valida entrada de unidade do usuário
-        if(temp <= -500)
-            printf("Unidade de temperatura não reconhecida, tente novamente\n\n");
-        else{ 
-            printf("%.3lf%s%c\n", temp, uni2 !='K' ? " *": " ",  uni2);
-            l = 0;
+            case 4:
+                printf("\n=== Conversão de Massa ===\n");
+                printf("Digite o valor: ");
+                scanf("%lf", &valor);
+                printf("Digite a unidade de entrada (kg/g/t): ");
+                scanf("%s", unidadeEntrada);
+                printf("Digite a unidade de saída (kg/g/t): ");
+                scanf("%s", unidadeSaida);
+                printf("Resultado: %.2lf\n", 
+                    converterMassa(valor, unidadeEntrada, unidadeSaida));
+                break;
+
+            case 0:
+                printf("Encerrando o programa...\n");
+                break;
+
+            default:
+                printf("Opção inválida!\n");
         }
-    } while (l);
+    } while(opcao != 0);
 
     return 0;
 }
